@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+<<<<<<< HEAD
+import 'package:redux_saga/redux_saga.dart';
+import 'package:task_redux_saga/Model/check_connection.dart';
+import 'package:task_redux_saga/Model/data.dart';
+import 'package:task_redux_saga/Widgets/Insert_data_widget.dart';
+import 'package:task_redux_saga/redux/actions.dart';
+import 'package:task_redux_saga/redux/reducers.dart';
+import 'package:task_redux_saga/redux/sagas.dart';
+import 'package:task_redux_saga/views/display_data.dart';
+import 'Model/View_model.dart';
+import 'Widgets/alert_dialog.dart';
+=======
+import 'package:task_redux_saga/Model/data.dart';
+import 'package:task_redux_saga/Widgets/Insert_data_widget.dart';
+import 'package:task_redux_saga/redux/reducers.dart';
+import 'package:task_redux_saga/views/display_data.dart';
+import 'Model/View_model.dart';
+>>>>>>> 0bb7f0fb860f22f0f8f67f6ad79a10f2bd6233ab
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+<<<<<<< HEAD
+    var sagaMiddleware = createSagaMiddleware();
+    final Store<AppState> store = Store<AppState>(appstatereducer,
+        initialState: AppState.initialState(),
+        middleware: [applyMiddleware(sagaMiddleware)]);
+    sagaMiddleware.setStore(store);
+    //sagaMiddleware.run(mySaga);
+=======
+    final Store<AppState> store =
+        Store<AppState>(appstatereducer, initialState: AppState.initialState());
+>>>>>>> 0bb7f0fb860f22f0f8f67f6ad79a10f2bd6233ab
+    return StoreProvider(
+      store: store,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'data insertion'),
+      ),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DisplayData()),
+                  );
+                },
+                icon: Icon(Icons.visibility))
+          ],
+        ),
+        body: StoreConnector<AppState, ViewModel>(
+            builder: (BuildContext context, ViewModel viewmodel) => Column(
+                  children: [AddData(model: viewmodel)],
+                ),
+            converter: (Store<AppState> store) => ViewModel.create(store)));
+  }
+}

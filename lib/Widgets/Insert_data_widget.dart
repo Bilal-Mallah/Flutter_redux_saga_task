@@ -37,15 +37,6 @@ class _AddDataState extends State<AddData> {
                   widget.model.onadd(quistion.text, answer.text);
                   quistion.text = "";
                   answer.text = "";
-                  hasNetwork().then((value) {
-                    if (value) {
-                      widget.model.onadd(quistion.text, answer.text);
-                      quistion.text = "";
-                      answer.text = "";
-                    } else {
-                      showAlertDialog(context, "No Internet Connection");
-                    }
-                  });
                 } else {
                   showAlertDialog(
                       context, "Please insert quistion and it's Answer");

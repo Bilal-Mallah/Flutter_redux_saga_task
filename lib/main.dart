@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         middleware: [applyMiddleware(sagaMiddleware)]);
     sagaMiddleware.setStore(store);
     //sagaMiddleware.run(mySaga);
-
     return StoreProvider(
       store: store,
       child: MaterialApp(

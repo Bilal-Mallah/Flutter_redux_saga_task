@@ -34,11 +34,9 @@ class _AddDataState extends State<AddData> {
                   backgroundColor: MaterialStateProperty.all(Colors.grey[400])),
               onPressed: () {
                 if (quistion.text.isNotEmpty && answer.text.isNotEmpty) {
-<<<<<<< HEAD
                   widget.model.onadd(quistion.text, answer.text);
                   quistion.text = "";
                   answer.text = "";
-=======
                   hasNetwork().then((value) {
                     if (value) {
                       widget.model.onadd(quistion.text, answer.text);
@@ -48,7 +46,6 @@ class _AddDataState extends State<AddData> {
                       showAlertDialog(context, "No Internet Connection");
                     }
                   });
->>>>>>> 0bb7f0fb860f22f0f8f67f6ad79a10f2bd6233ab
                 } else {
                   showAlertDialog(
                       context, "Please insert quistion and it's Answer");
